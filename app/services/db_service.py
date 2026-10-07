@@ -1,5 +1,6 @@
 from sqlalchemy import delete, select
-from sqlalchemy.dialects.sqlite import insert
+from sqlalchemy.dialects.sqlite import insert as sqlite_insert
+from sqlalchemy.dialects.postgresql import insert as postgres_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import Favorite, SearchHistory
@@ -11,6 +12,7 @@ async def list_favorites(session: AsyncSession):
 
 
 async def add_favorite(session: AsyncSession, city: City):
+    insert = postgres_insert if session.get_bind().dialect.name == "postgresql" else sqlite_insert
     values = city.model_dump()
     values.update(lat=round(city.lat, 4), lon=round(city.lon, 4))
     # Restrição única + ON CONFLICT evita duplicatas mesmo em requisições concorrentes.
