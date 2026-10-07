@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="description" content="Seu clima, com mais clareza. Previsão de cinco dias e dicas para planejar o dia.">
+  <title>Brisa — Seu dia, em boa companhia</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script type="module" src="/static/js/app.js"></script>
+</head>
+<body data-theme="sunny">
+  <a class="skip-link" href="#main">Pular para a previsão</a>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M6 18C3.8 18 2 16.2 2 14C2 11.8 3.8 10 6 10C6.4 6.6 8.6 4.5 12 4.5C15.5 4.5 18 7 18 10H18.5C21 10 23 11.8 23 14C23 16.2 21 18 18.5 18Z"/></symbol>
+    <symbol id="i-rain" viewBox="0 0 24 24"><path d="M6 14a3.5 3.5 0 0 1-.7-6.9A5 5 0 0 1 15 6a4 4 0 1 1 3 8M7 18l-1 3m6-3-1 3m6-3-1 3"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 13.2A9 9 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9 4l3 3 3-3M9 20l3-3 3 3"/></symbol>
+    <symbol id="i-storm" viewBox="0 0 24 24"><path d="M5 14a4 4 0 0 1 0-8 6 6 0 0 1 11-1 4.5 4.5 0 1 1 3 9M12 11l-3 6h5l-3 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.5l-5.7 3 1.1-6.3L2.8 9.7l6.4-.9Z"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h5a3 3 0 1 1-3 3"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 2v4m-2-2h4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-rise" viewBox="0 0 24 24"><path d="M2 19h20M5 16a7 7 0 0 1 14 0M12 2v4M3 7l2 2m14 0 2-2M9 4l3-3 3 3"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Suas cidades">
+      <a class="brand" href="/" aria-label="Brisa, início"><span class="brand-mark"><svg class="icon"><use href="#i-sun"/></svg></span>brisa<span class="brand-dot">.</span></a>
+      <p class="brand-caption">UM RESPIRO NO SEU DIA</p>
+      <div class="nav-active"><svg class="icon"><use href="#i-sun"/></svg>Visão geral<span>01</span></div>
+      <section class="side-section"><div class="section-label"><h2>FAVORITOS</h2><span id="favorites-count">0</span></div><div id="favorites-list"><p class="side-empty">Carregando suas cidades…</p></div></section>
+      <section class="side-section history-section"><div class="section-label"><h2>BUSCAS RECENTES</h2><svg class="icon"><use href="#i-clock"/></svg></div><div id="history-list"><p class="side-empty">Carregando histórico…</p></div></section>
+      <div class="sidebar-note"><span class="small-sun">✳</span><p>O tempo muda.<br><strong>Seus planos acompanham.</strong></p><span>Um pouco de previsão.<br>Mais possibilidades para o dia.</span></div>
+      <div class="sidebar-bottom"><span class="status-dot"></span>Clima com clareza</div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <header class="topbar"><span>Seu dia, em boa companhia.</span><span class="date" id="header-date"></span></header>
+      <div class="page-heading"><div><p class="eyebrow">OLHE PARA FORA. PLANEJE AQUI.</p><h1>Como está o tempo?</h1><p>A previsão que ajuda você a aproveitar o dia.</p></div><span class="unit-pill" title="Temperaturas em Celsius">°C</span></div>
+      <div class="search-row">
+        <div class="search-wrap"><svg class="icon"><use href="#i-search"/></svg><label class="sr-only" for="city-search">Buscar cidade</label><input id="city-search" type="search" placeholder="Para onde vamos? Busque uma cidade" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false"><kbd aria-hidden="true">/</kbd><div id="search-results" role="listbox" aria-label="Cidades encontradas" hidden></div></div>
+        <button id="locate-button" class="button location-button" aria-label="Usar minha localização"><svg class="icon"><use href="#i-target"/></svg><span>Minha localização</span></button>
+      </div>
+      <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+      <div id="error-banner" class="error-banner" role="alert" hidden><span id="error-message"></span><button id="retry-button" class="button">Tentar novamente</button></div>
+      <div id="loading" class="loading" role="status" hidden><span class="spinner"></span>Consultando o céu e preparando sua dica…<div class="skeleton skeleton-banner"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-banner"></div></div>
+      <div id="dashboard" hidden>
+        <section class="insight-card" aria-labelledby="insight-label"><span class="insight-icon"><svg class="icon"><use href="#i-spark"/></svg></span><div><div class="insight-heading"><h2 id="insight-label">Um olhar sobre o seu dia</h2><span id="ai-badge" class="ai-badge"></span></div><p id="ai-insight"></p></div><span class="insight-decoration" aria-hidden="true">✧</span></section>
+        <div class="weather-layout">
+          <section class="current-card" aria-labelledby="city-name"><div class="current-top"><span class="live-label"><span class="status-dot"></span>AGORA</span><button id="favorite-button" class="icon-button" aria-label="Salvar nos favoritos" aria-pressed="false"><svg class="icon"><use href="#i-star"/></svg></button></div><div class="city-line"><svg class="icon"><use href="#i-pin"/></svg><h2 id="city-name"></h2></div><p id="city-region" class="city-region"></p><div class="temperature-row"><div><div id="temperature" class="temperature"></div><p id="condition" class="condition"></p></div><div class="weather-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="art-glow"></span><svg id="hero-icon"><use href="#i-sun"/></svg></div></div><div class="current-bottom"><span id="today-range"></span><span id="current-time"></span></div></section>
+          <section class="details-card" aria-labelledby="details-heading"><div class="card-heading"><h2 id="details-heading">Nos detalhes</h2><span>Agora</span></div><div class="metrics"><div class="metric"><span class="metric-icon"><svg class="icon"><use href="#i-sun"/></svg></span><span>Sensação térmica</span><strong id="feels-like"></strong></div><div class="metric"><span class="metric-icon"><svg class="icon"><use href="#i-drop"/></svg></span><span>Umidade do ar</span><strong id="humidity"></strong></div><div class="metric"><span class="metric-icon"><svg class="icon"><use href="#i-wind"/></svg></span><span>Velocidade do vento</span><strong id="wind"></strong></div><div class="metric"><span class="metric-icon"><svg class="icon"><use href="#i-rain"/></svg></span><span>Precipitação atual</span><strong id="precipitation"></strong></div></div></section>
+        </div>
+        <section class="forecast-section" aria-labelledby="forecast-heading">
+          <div class="section-heading"><h2 id="forecast-heading">Escolha o dia. Veja cada hora.</h2><span>HOJE + 5 DIAS <svg class="icon"><use href="#i-arrow"/></svg></span></div>
+          <p class="forecast-hint">Toque em um dia para ver os horários e a chance de chuva.</p>
+          <div id="forecast-grid" class="forecast-grid" role="group" aria-label="Dia da previsão horária"></div>
+        </section>
+        <section id="hourly-panel" class="hourly-panel" aria-labelledby="hourly-title">
+          <div class="hourly-heading"><div><h2 id="hourly-title">Hora a hora</h2><p id="hourly-timezone"></p></div><div class="hourly-navigation"><button id="hourly-previous" class="icon-button" aria-label="Ver horários anteriores">←</button><button id="hourly-next" class="icon-button" aria-label="Ver próximos horários">→</button></div></div>
+          <p id="hourly-summary" class="hourly-summary" role="status" aria-live="polite"></p>
+          <ul id="hourly-scroll" class="hourly-scroll" tabindex="0" aria-label="Previsão por hora; deslize ou use as setas para ver mais horários"></ul>
+          <p class="hourly-note">Gota: chance de precipitação · mm: volume previsto. Chuva e volume referem-se à hora anterior ao horário indicado. A previsão pode mudar.</p>
+        </section>
+        <section class="daylight-card"><span class="daylight-icon"><svg class="icon"><use href="#i-rise"/></svg></span><div><h2>A luz do seu dia</h2><p id="daylight-description">Horários locais de nascer e pôr do sol</p></div><div class="sun-time"><span>Nascer do sol</span><strong id="sunrise"></strong></div><div class="sun-path" aria-hidden="true"><span>☀</span></div><div class="sun-time"><span>Pôr do sol</span><strong id="sunset"></strong></div></section>
+      </div>
+      <footer><span>Dados: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · Geocodificação: GeoNames</span><span id="data-status">Feito para acompanhar seu ritmo.</span></footer>
+      <noscript>Ative o JavaScript para pesquisar cidades e consultar a previsão.</noscript>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
